@@ -1,53 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ENGGAL JAYA</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden;background:#000} /* INI KUNCINYA BIAR GAK PUTIH */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+html,body{height:100%;overflow:hidden}
 
+/* HOME FULL DI BELAKANG */
+#home-behind{position:fixed;inset:0;z-index:1;background:#fff;overflow:auto}
+.header{background:#8b0000;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo{font-weight:900}
+.menu{display:flex;gap:8px;font-size:12px}
+.menu a{color:#fff;text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,0,.4);border-radius:20px;position:relative;overflow:hidden;z-index:1;transition:.3s}
+.menu a::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:#ff0;z-index:-1;transition:.35s}
+.menu a:hover::before{width:100%} .menu a:hover{color:#8b0000;font-weight:bold}
+.menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
+.hero{height:350px;background:#333 url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800') center/cover;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(80,0,0,.6)}
+.hero-inner{position:relative;z-index:2}
+.hero-inner h1 span{color:#ff0}
+.btn{display:inline-block;margin-top:12px;background:#ff0;color:#400;padding:10px 20px;font-weight:900;text-decoration:none;border-radius:25px}
+.about{background:#fff;padding:28px 18px}
+.about h2{color:#8b0000;text-align:center;margin-bottom:12px}
+.red{color:#b00000;font-weight:900}
+.melayani{margin:15px 0;padding:14px;background:#fffbe6;border:1.5px dashed #8b0000;border-radius:10px}
+.melayani b{color:#8b0000}
+.melayani ul{list-style:none;margin-top:8px}
+.melayani li{margin:4px 0;font-weight:bold}
+.list{margin:18px 0 14px 18px}
+.list li{margin-bottom:12px;font-size:17px;line-height:1.7}
+.footer{background:#2b0000;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;font-size:11px}
+.wa{position:fixed;bottom:18px;right:12px;display:flex;align-items:center;gap:8px;z-index:999}
+.wa-bubble{background:#fff;padding:7px 12px;border-radius:18px;font-size:12px;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.wa-btn{background:#25D366;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.wa-btn img{width:28px}
+
+/* PORTAL DI DEPAN - PERSIS FOTO MU */
 #container{position:fixed;inset:0;z-index:9999;display:flex}
-
-.door{
-  width:50%;height:100%;
-  transition:0.9s cubic-bezier(.77,0,.18,1);
-}
-.door.left{
-  background: linear-gradient(90deg, #c94c5a 0%, #6b2a31 100%);
-}
-.door.right{
-  background: linear-gradient(90deg, #4a4a4a 0%, #d0d0d0 100%);
-}
-
+.door{width:50%;height:100%;transition:1s cubic-bezier(.77,0,.18,1)}
+.door.left{background:linear-gradient(90deg,#d86b7a 0%,#5a2a31 100%)}
+.door.right{background:linear-gradient(90deg,#3a3a3a 0%,#e0e0e0 100%)}
 #prisma{
-  position:fixed;left:50%;top:50%;
-  width:155px;height:155px;
-  background: linear-gradient(180deg, #f5f5f5, #a0a0a0);
+  position:fixed;left:50%;top:50%;width:165px;height:165px;
+  background:linear-gradient(180deg,#f0f0f0 0%,#a8a8a8 100%);
   transform:translate(-50%,-50%) rotate(45deg);
-  box-shadow:2px 4px 15px rgba(0,0,0,0.6);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;z-index:10;transition:0.6s;
+  box-shadow:4px 4px 12px rgba(0,0,0,0.5);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:0.6s;
 }
-
-#prisma span{
-  transform:rotate(-45deg);
-  font-family:Arial, sans-serif;
-  font-weight:900;
-  font-size:16px;
-  letter-spacing:3px;
-  color:#c03a48;
-  text-shadow:1px 1px 0px rgba(0,0,0,0.3), -0.5px -0.5px 0px rgba(255,255,255,0.8);
-}
-
-/* BENERIN SELECTOR - HARUS PAKAI #container.open */
+#prisma span{transform:rotate(-45deg);font-weight:900;font-size:15px;letter-spacing:4px;color:#c94c5a;text-shadow:1px 1px 2px rgba(0,0,0,0.6);font-family:Arial}
 #container.open .left{transform:translateX(-100%)}
 #container.open .right{transform:translateX(100%)}
 #container.open #prisma{transform:translate(-50%,-50%) rotate(45deg) scale(0);opacity:0}
+#container.open{pointer-events:none}
 </style>
 </head>
 <body>
 
+<!-- FULL HOME KAMU DI BELAKANG -->
+<div id="home-behind">
+<div class="header"><div class="logo">ENGGAL JAYA</div><div class="menu"><a href="#" class="active">HOME</a><a href="about">ABOUT</a><a href="#">SHOWCASE</a></div></div>
+<div class="hero"><div class="hero-inner"><h1>KOLTER & <span>GRINDING</span><br>SLEEVE CRANKSHAFT</h1><a class="btn" href="#">VIEW SHOWCASE</a></div></div>
+<div class="about">
+<h2>WELCOME TO ENGGAL JAYA</h2>
+<p><b>ENGGAL JAYA</b> adalah bengkel spesialis <span class="red">kolter, grinding, sleeve crankshaft, dan cylinder head</span> di Sidoarjo - Surabaya.</p>
+<div class="melayani"><b>Melayani :</b><ul><li>• KOLTER</li><li>• SLEEVE CRANKSHAFT</li><li>• GRINDING</li><li>• SEATING SILINDER HEAD</li></ul></div>
+<ul class="list">
+<li><span class="red">1. KOLTER BLOK MESIN</span><br>Mengembalikan silinder aus / baret dengan presisi tinggi.</li>
+<li><span class="red">2. GRINDING CRANKSHAFT</span><br>Grinding kruk as oleng sesuai oversize, hasil halus & balance.</li>
+<li><span class="red">3. SLEEVE BLOK & CRANKSHAFT</span><br>Solusi hemat blok tidak bisa di kolter lagi.</li>
+<li><span class="red">4. SERVICE CYLINDER HEAD</span><br>Sekur klep, ganti sitting, bos klep, milling melengkung.</li>
+</ul>
+</div>
+<div style="background:#fff;padding:15px;border-radius:10px;margin:15px 10px;border:2px solid #ff0">
+<p style="font-weight:bold">📍 ALAMAT: Jl. Mbah Oteh, Wadungasih, Buduran - Sidoarjo 61252<br>📞 <a href="tel:0815257778263">08152-5777-8263</a></p>
+</div>
+<div class="footer"><span>© ENGGAL JAYA</span><a href="#" style="color:#fff;text-decoration:none">Top ↑</a></div>
+<div class="wa"><div class="wa-bubble">Butuh bantuan?</div><a class="wa-btn" href="https://wa.me/6283856058316" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"></a></div>
+</div>
+
+<!-- PINTU PORTAL -->
 <div id="container">
   <div class="door left"></div>
   <div class="door right"></div>
@@ -57,9 +89,14 @@ html,body{height:100%;overflow:hidden;background:#000} /* INI KUNCINYA BIAR GAK 
 <script>
 function masuk(){
   document.getElementById('container').classList.add('open');
-  setTimeout(()=>{ window.location.href='home.html'; }, 900);
+  setTimeout(()=>{
+    document.getElementById('container').style.display='none';
+    document.documentElement.style.overflow='auto';
+    document.body.style.overflow='auto';
+    document.getElementById('home-behind').style.position='relative';
+    document.getElementById('home-behind').style.overflow='visible';
+  }, 1000);
 }
 </script>
-
 </body>
 </html>
