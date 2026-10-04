@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENGGAL JAYA</title>
+<style>
+/* ===== TIRAI + PRISMA + EMBOS - LUAR ===== */
+html:before, html:after {
+  content:''; position:fixed; top:0; bottom:0; width:50%;
+  background:linear-gradient(-90deg,#333 -10%,#d56 100%);
+  transition:0.6s 0.1s linear; z-index:9999; box-shadow:0 0 5px;
+}
+html:after { right:0; background:linear-gradient(90deg,#333 -10%,#ddd 100%); }
+html:before { left:0; }
+html:hover:before, html:hover:after{ width:0; box-shadow:0 0 15px; }
+
+/* TULISAN EMBOS DI ATAS PRISMA */
+body:before{
+  content:'ENGGAL JAYA'; position:fixed; width:100%; text-align:center;
+  z-index:10001; left:0; top:42%; margin-top:-18px; font-size:15px;
+  letter-spacing:4px; font-weight:900; font-family::'Bebas Neue', sans-serif;
+  font-variant:small-caps; color:#d56;
+  text-shadow: 0.5px 0.5px 1px black, -1px -1px 1px rgba(0,0,0,0.7);
+  transition:0.3s linear;
+}
+/* PRISMA KOTAK MIRING */
+body:after{
+  content:''; position:fixed; height:110px; width:110px;
+  background:linear-gradient(135deg,#eee,#888);
+  z-index:10000; right:65%; top:50%; margin:-110px;
+  transform:rotate(45deg); box-shadow:1px -1px 5px rgba(0,0,0,.5), inset 1px 1px 2px white;
+  transition:0.6s linear;
+}
+html:hover body:before{ left:-10%; width:0; opacity:0; }
+html:hover body:after{ right:100%; margin:-110px 100px 0 -110px; opacity:0; }
