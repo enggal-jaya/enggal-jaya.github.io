@@ -1,35 +1,64 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ENGGAL JAYA</title>
 <style>
-/* ===== TIRAI + PRISMA + EMBOS - LUAR ===== */
-html:before, html:after {
-  content:''; position:fixed; top:0; bottom:0; width:50%;
-  background:linear-gradient(-90deg,#333 -10%,#d56 100%);
-  transition:0.6s 0.1s linear; z-index:9999; box-shadow:0 0 5px;
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:#000}
+canvas{position:fixed;inset:0;z-index:1}
+.door{position:fixed;top:0;bottom:0;width:50%;z-index:10;transition:0.9s cubic-bezier(.77,0,.18,1)}
+#left{left:0;background:linear-gradient(90deg,#c94c5a 0%,#3d1e23 100%)}
+#right{right:0;background:linear-gradient(90deg,#4a4a4a 0%,#d0d0d0 100%)}
+#prisma{
+  position:fixed;left:50%;top:50%;z-index:20;
+  width:160px;height:160px;
+  /* INI GRADIENT PRISM NYA */
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 30%, #8a8a8a 100%);
+  border:1px solid rgba(255,255,255,0.6);
+  transform:translate(-50%,-50%) rotate(45deg);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:0.6s;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.7), inset -5px -5px 15px rgba(0,0,0,0.3), inset 5px 5px 15px rgba(255,255,255,0.8);
 }
-html:after { right:0; background:linear-gradient(90deg,#333 -10%,#ddd 100%); }
-html:before { left:0; }
-html:hover:before, html:hover:after{ width:0; box-shadow:0 0 15px; }
+#prisma span{
+  transform:rotate(-45deg);
+  font-weight:900;
+  color:#b52f3e;
+  letter-spacing:2px;
+  font-family:Arial;
+  font-size:14px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4), -1px -1px 0px white;
+}
+</style>
+</head>
+<body>
+<canvas></canvas>
+<div id="left" class="door"></div>
+<div id="right" class="door"></div>
+<div id="prisma" onclick="masuk()"><span>ENGGAL JAYA</span></div>
 
-/* TULISAN EMBOS DI ATAS PRISMA */
-body:before{
-  content:'ENGGAL JAYA'; position:fixed; width:100%; text-align:center;
-  z-index:10001; left:0; top:42%; margin-top:-18px; font-size:15px;
-  letter-spacing:4px; font-weight:900; font-family::'Bebas Neue', sans-serif;
-  font-variant:small-caps; color:#d56;
-  text-shadow: 0.5px 0.5px 1px black, -1px -1px 1px rgba(0,0,0,0.7);
-  transition:0.3s linear;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/101/three.min.js"></script>
+<script>
+p=[[389,246,0],[410,255,20],[413,268,7],[431,261,12],[418,244,30],[416,217,25],[420,205,8],[427,227,-20],[432,236,5],[444,228,12],[451,232,41],[446,246,72],[443,264,96],[446,278,65],[463,267,20],[460,258,-10],[464,243,-20],[459,233,0],[475,225,22],[484,225,29],[490,214,51],[476,202,55],[462,202,55],[446,205,42],[440,192,42],[430,183,72],[413,184,58],[406,191,32],[406,207,0],[402,220,0],[390,222,20],[385,228,10],[389,246,0]];
+var w=innerWidth,h=innerHeight;onresize=()=>{w=innerWidth;h=innerHeight;camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}
+var renderer=new THREE.WebGLRenderer({canvas:document.querySelector("canvas"),antialias:true});renderer.setSize(w,h);
+var scene=new THREE.Scene();var camera=new THREE.PerspectiveCamera(60,w/h,.001,1000);
+for(i=0;i<p.length;i++){p[i]=new THREE.Vector3(p[i][0],p[i][2],p[i][1]);}
+var path=new THREE.CatmullRomCurve3(p);
+var geometry=new THREE.TubeGeometry(path,1000,2,3,true);
+var hue=0,hup=true;for(i=0;i<geometry.faces.length;i++){hup==1?hue++:hue--;hue==360?hup=false:hue==0?hup=true:0;geometry.faces[i].color=new THREE.Color("hsl("+hue+",100%,50%)");}
+var tube=new THREE.Mesh(geometry,new THREE.MeshLambertMaterial({side:THREE.BackSide,vertexColors:THREE.FaceColors,wireframe:true}));scene.add(tube);
+scene.add(new THREE.AmbientLight(0x222222));
+var pct=0;function render(){pct+=0.00015;var pt1=path.getPointAt(pct%1);var pt2=path.getPointAt((pct+.01)%1);camera.position.set(pt1.x,pt1.y,pt1.z);camera.lookAt(pt2);renderer.render(scene,camera);requestAnimationFrame(render);}render();
+
+function masuk(){
+  document.getElementById('left').style.transform='translateX(-100%)';
+  document.getElementById('right').style.transform='translateX(100%)';
+  document.getElementById('prisma').style.transform='translate(-50%,-50%) rotate(45deg) scale(0)';
+  document.getElementById('prisma').style.opacity='0';
+  setTimeout(()=>{ location.href='home.html'; }, 900);
 }
-/* PRISMA KOTAK MIRING */
-body:after{
-  content:''; position:fixed; height:110px; width:110px;
-  background:linear-gradient(135deg,#eee,#888);
-  z-index:10000; right:65%; top:50%; margin:-110px;
-  transform:rotate(45deg); box-shadow:1px -1px 5px rgba(0,0,0,.5), inset 1px 1px 2px white;
-  transition:0.6s linear;
-}
-html:hover body:before{ left:-10%; width:0; opacity:0; }
-html:hover body:after{ right:100%; margin:-110px 100px 0 -110px; opacity:0; }
+</script>
+</body>
+</html>
