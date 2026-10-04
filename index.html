@@ -5,7 +5,7 @@
 <title>ENGGAL JAYA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{height:100%;overflow:hidden}
+html,body{height:100%;overflow:hidden;background:#000} /* INI KUNCINYA BIAR GAK PUTIH */
 
 #container{position:fixed;inset:0;z-index:9999;display:flex}
 
@@ -40,9 +40,10 @@ html,body{height:100%;overflow:hidden}
   text-shadow:1px 1px 0px rgba(0,0,0,0.3), -0.5px -0.5px 0px rgba(255,255,255,0.8);
 }
 
-.open .left{transform:translateX(-100%)}
-.open .right{transform:translateX(100%)}
-.open #prisma{transform:translate(-50%,-50%) rotate(45deg) scale(0);opacity:0}
+/* BENERIN SELECTOR - HARUS PAKAI #container.open */
+#container.open .left{transform:translateX(-100%)}
+#container.open .right{transform:translateX(100%)}
+#container.open #prisma{transform:translate(-50%,-50%) rotate(45deg) scale(0);opacity:0}
 </style>
 </head>
 <body>
