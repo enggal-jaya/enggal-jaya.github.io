@@ -8,9 +8,9 @@
 html,body{height:100%;overflow:hidden}
 #home-behind{position:fixed;inset:0;z-index:1;background:#fff;overflow:auto}
 .header{background:#8b0000;color:transparent;padding:20px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo img{height:30px;width:100;display:block;background:transparent;padding:-5px 16px;border-radius:2px}
-.menu{display:flex;gap:2px;font-size:12px}
-.menu a{color:#fff;text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,0,.4);border-radius:80px;position:relative;overflow:hidden;z-index:1;transition:.3s}
+.logo img{height:30px;width:50;display:block;background:none;padding:-5px 16px;border-radius:4px}
+.menu{display:flex;gap:3px;font-size:10px}
+.menu a{color:#fff;text-decoration:none;padding:8px 10px;border:1px solid rgba(255,255,0,.4);border-radius:5px;position:relative;overflow:hidden;z-index:1;transition:.3s}
 .menu a::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:#ff0;z-index:-1;transition:.35s}
 .menu a:hover::before{width:100%} .menu a:hover{color:#8b0000;font-weight:bold}
 .menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
@@ -56,11 +56,18 @@ html,body{height:100%;overflow:hidden}
     <a href="contact.html">CONTACT</a>
   </div>
 </div>
-
-<div class="hero"><div class="hero-inner"><h1>SELAMAT <span>DATANG</span><br>DI ENGGAL JAYA</h1><a class="btn" href="photos.html">VIEW SHOWCASE</a></div></div>
-
+<div class="hero">
+  <div class="hero-inner">
+    <h1 style="line-height:1.15;text-align:center">
+      <span style="color:#ff00ff">SELAMAT DATANG</span><br>
+      <span style="display:block;text-align:center">DI</span>
+      ENGGAL JAYA
+    </h1>
+    <a class="btn" href="photos.html">VIEW SHOWCASE</a>
+  </div>
+</div>
 <div class="about">
-<p><b>ENGGAL JAYA</b> adalah bengkel spesialis <span class="red">kolter, grinding, sleeve crankshaft, dan cylinder head</span> di Sidoarjo - Surabaya.</p>
+<p><b>ENGGAL JAYA</b> bergerak di bidang  <span class="red">Enginnering</span> di wilayah Sidoarjo - Jawa Timur.</p>
 <div class="melayani"><b>Melayani :</b><ul><li>• KOLTER</li><li>• SLEEVE CRANKSHAFT</li><li>• GRINDING</li><li>• SEATING SILINDER HEAD</li></ul></div>
 <ul class="list">
 <li><span class="red">1. KOLTER BLOK MESIN</span><br>Mengembalikan diameter silinder ke standar (overbush) / oversize dengan presisi.</li>
