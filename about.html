@@ -11,10 +11,12 @@ body{background:#f2f2f2}
 .logo img{width:105px;display:block} 
 .logo{font-weight:900;font-size:18px;line-height:1;display:flex;align-items:center;gap:8px}
 .logo span{color:#ffcc00}
-.menu{font-size:16px;display:flex;gap:15px;align-items:center}
-.menu a{color:#ffc700;text-decoration:none;opacity:.6;transition:.2s;padding-bottom:4px}
-.menu a.active{opacity:1;font-weight:bold;border-bottom:3px solid #7fff00}
-.menu a:hover{opacity:1}
+.logo img{height:30px;width:50;display:block;background:none;padding:-5px 16px;border-radius:4px}
+.menu{display:flex;gap:3px;font-size:10px}
+.menu a{color:#fff;text-decoration:none;padding:8px 10px;border:1px solid rgba(255,255,0,.4);border-radius:5px;position:relative;overflow:hidden;z-index:1;transition:.3s}
+.menu a::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:#ff0;z-index:-1;transition:.35s}
+.menu a:hover::before{width:100%} .menu a:hover{color:#8b0000;font-weight:bold}
+.menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
 .hero{position:relative;height:280px;background:url('ENNGALJAYA.jpg') center/cover no-repeat}
 .hero::after{content:'';position:absolute;inset:0;background:rgba(80,0,0,.7)}
 .hero-text{position:absolute;z-index:2;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:#fff;width:90%}
