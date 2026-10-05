@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SHOWCASE - ENGGALJAYA</title>
+<title>SHOWCASE - Enggal Jaya</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 .header{background:#8b0000;color:#fff;padding:20px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
@@ -10,15 +10,15 @@
 .menu a{color:#fff;text-decoration:none;padding:8px 10px;border:1px solid rgba(255,255,0,.4);border-radius:5px}
 .menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 10px;border-bottom:1px solid #ddd}
-.tabs button{border:none;padding:6px 14px;font-size:11px;font-weight:bold;border-radius:3px;background:#eee}
+.tabs button{border:none;padding:8px 14px;font-size:12px;font-weight:bold;border-radius:4px;background:#eee;white-space:nowrap}
 .tabs button.active{background:#8b0000;color:#fff}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px;padding:15px}
 .frame{border:2px solid #999;padding:3px;background:#fff;box-shadow:0 6px 8px -4px rgba(0,0,0,.4);cursor:pointer}
-.frame img{width:100%;height:110px;object-fit:cover;display:block;pointer-events:none}
-.card p{font-size:10px;text-align:center;margin-top:6px;font-weight:bold}
+.frame img{width:100%;height:110px;object-fit:cover;display:block}
+.card p{font-size:11px;text-align:center;margin-top:6px;font-weight:bold}
 #popup{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999;padding:15px}
 #popup.show{display:flex}
-.pop-box{background:#fff;border-radius:10px;padding:12px;max-width:360px;width:100%;border-top:5px solid #8b0000;position:relative}
+.pop-box{background:#fff;border-radius:10px;padding:12px;max-width:360px;width:100%;border-top:5px solid #8b0000}
 .pop-box img{width:100%;height:220px;object-fit:cover}
 .pop-box h3{color:#8b0000;margin:10px 0 5px}
 .pop-box p{font-size:13px;line-height:1.6}
@@ -32,14 +32,14 @@
 </div>
 <h2 style="text-align:center;padding:18px 0 5px;color:#b00000">SHOWCASE PEKERJAAN</h2>
 <div class="tabs">
-  <button class="active" onclick="filterCat('KOLTER',this)">KOLTER</button>
+  <button id="btn-kolter" class="active" onclick="filterCat('KOLTER',this)">KOLTER</button>
   <button onclick="filterCat('GRINDING',this)">GRINDING</button>
   <button onclick="filterCat('SLEEVE',this)">SLEEVE</button>
   <button onclick="filterCat('HEAD',this)">SILINDER HEAD</button>
 </div>
 <div class="grid">
-  <div class="card" data-cat="KOLTER"><div class="frame" onclick="openPop('KOLTER.jpg','KOLTER BLOK MESIN','Mengembalikan diameter silinder ke standar/oversize dengan presisi tinggi.')"><img src="KOLTER.jpg"></div><p>KOLTER</p></div>
-  <div class="card" data-cat="GRINDING"><div class="frame" onclick="openPop('GRINDING.jpg','GRINDING BLOK & HEAD','Meratakan permukaan blok & head yang melengkung. Anti bocor kompresi.')"><img src="GRINDING.jpg"></div><p>GRINDING</p></div>
+  <div class="card" data-cat="KOLTER"><div class="frame" onclick="openPop('KOLTER.jpg','KOLTER BLOK MESIN','Kolter presisi mengembalikan diameter silinder ke standar/oversize.')"><img src="KOLTER.jpg"></div><p>KOLTER</p></div>
+  <div class="card" data-cat="GRINDING"><div class="frame" onclick="openPop('GRINDING.jpg','GRINDING BLOK & HEAD','Meratakan permukaan blok & head yang melengkung.')"><img src="GRINDING.jpg"></div><p>GRINDING</p></div>
   <div class="card" data-cat="SLEEVE"><div class="frame" onclick="openPop('SLEEVE.jpg','SLEEVE CRANKSHAFT','Sleeve kruk as oleng sesuai oversize, balance ulang.')"><img src="SLEEVE.jpg"></div><p>SLEEVE</p></div>
 </div>
 <div id="popup" onclick="if(event.target.id=='popup')closePop()"><div class="pop-box"><img id="pop-img" src=""><h3 id="pop-title"></h3><p id="pop-desc"></p><button onclick="closePop()" style="margin-top:12px;background:#8b0000;color:#fff;border:none;padding:10px;width:100%;border-radius:6px;font-weight:bold">TUTUP</button></div></div>
@@ -47,9 +47,18 @@
 <script>
 function openPop(i,t,d){document.getElementById('pop-img').src=i;document.getElementById('pop-title').innerText=t;document.getElementById('pop-desc').innerText=d;document.getElementById('popup').classList.add('show')}
 function closePop(){document.getElementById('popup').classList.remove('show')}
-function filterCat(cat,btn){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.querySelectorAll('.card').forEach(c=>{c.style.display=c.dataset.cat==cat?'block':'none'});}
-// awal tampil semua dulu
-window.onload=()=>{document.querySelectorAll('.card').forEach(c=>c.style.display='block')}
+function filterCat(cat,btn){
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display = (c.dataset.cat==cat) ? 'block' : 'none';
+  });
+}
+// PAS AWAL BUKA, LANGSUNG FILTER KOLTER AJA
+window.addEventListener('load',()=>{
+  const firstBtn = document.getElementById('btn-kolter');
+  filterCat('KOLTER', firstBtn);
+});
 </script>
 </body>
 </html>
