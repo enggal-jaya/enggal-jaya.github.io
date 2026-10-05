@@ -7,10 +7,10 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 html,body{height:100%;overflow:hidden}
 #home-behind{position:fixed;inset:0;z-index:1;background:#fff;overflow:auto}
-.header{background:#8b0000;color:#fff;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo img{height:58px;width:105;display:block;background:#fff;padding:3px 8px;border-radius:6px}
-.menu{display:flex;gap:8px;font-size:12px}
-.menu a{color:#fff;text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,0,.4);border-radius:20px;position:relative;overflow:hidden;z-index:1;transition:.3s}
+.header{background:#8b0000;color:transparent;padding:20px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo img{height:30px;width:100;display:block;background:#fff;padding:-5px 16px;border-radius:2px}
+.menu{display:flex;gap:2px;font-size:12px}
+.menu a{color:#fff;text-decoration:none;padding:6px 10px;border:1px solid rgba(255,255,0,.4);border-radius:80px;position:relative;overflow:hidden;z-index:1;transition:.3s}
 .menu a::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:#ff0;z-index:-1;transition:.35s}
 .menu a:hover::before{width:100%} .menu a:hover{color:#8b0000;font-weight:bold}
 .menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
@@ -47,7 +47,6 @@ html,body{height:100%;overflow:hidden}
 </head>
 <body>
 
-<div id="home-behind">
 <div class="header">
   <div class="logo"><img src="logo.png" alt="ENGGAL JAYA"></div>
   <div class="menu">
