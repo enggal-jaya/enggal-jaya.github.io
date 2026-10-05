@@ -5,27 +5,19 @@
 <title>ENGGAL JAYA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-html,body{height:100%;overflow:hidden}
-#home-behind{position:fixed;inset:0;z-index:1;background:#fff;overflow:auto}
-.header{background:#8b0000;color:transparent;padding:20px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo img{height:30px;width:50;display:block;background:none;padding:-5px 16px;border-radius:4px}
+html,body{height:auto;overflow:auto;scroll-behavior:smooth}
+.header{background:#8b0000;color:#fff;padding:20px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+.logo img{height:32px;width:auto;display:block}
 .menu{display:flex;gap:3px;font-size:10px}
-.menu a{color:#fff;text-decoration:none;padding:8px 10px;border:1px solid rgba(255,255,0,.4);border-radius:5px;position:relative;overflow:hidden;z-index:1;transition:.3s}
-.menu a::before{content:'';position:absolute;top:0;left:0;width:0;height:100%;background:#ff0;z-index:-1;transition:.35s}
-.menu a:hover::before{width:100%} .menu a:hover{color:#8b0000;font-weight:bold}
+.menu a{color:#fff;text-decoration:none;padding:8px 10px;border:1px solid rgba(255,255,0,.4);border-radius:5px;transition:.3s}
 .menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
-.hero{height:350px;background:#333 url('ENNGALJAYA.jpg') center/cover;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.hero{height:420px;background:#333 url('ENNGALJAYA.jpg') center/cover;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
 .hero::after{content:'';position:absolute;inset:0;background:rgba(80,0,0,.6)}
 .hero-inner{position:relative;z-index:2}
-.hero-inner h1 span{color:#ff0}
 .btn{display:inline-block;margin-top:12px;background:#ff0;color:#400;padding:10px 20px;font-weight:900;text-decoration:none;border-radius:25px}
 .about{background:#fff;padding:28px 18px}
-.about h2{color:#8b0000;text-align:center;margin-bottom:12px}
 .red{color:#b00000;font-weight:900}
 .melayani{margin:15px 0;padding:14px;background:#fffbe6;border:1.5px dashed #8b0000;border-radius:10px}
-.melayani b{color:#8b0000}
-.melayani ul{list-style:none;margin-top:8px}
-.melayani li{margin:4px 0;font-weight:bold}
 .list{margin:18px 0 14px 18px}
 .list li{margin-bottom:12px;font-size:17px;line-height:1.7}
 .footer{background:#2b0000;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;font-size:11px}
