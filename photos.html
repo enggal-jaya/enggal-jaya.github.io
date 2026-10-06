@@ -2,20 +2,19 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" type="image/png" href="Favicon.png">
 <title>SHOWCASE - ENGGALJAYA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-.header{background:#8b0000;color:#fff;padding:20px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo img{height:32px}
-.menu{display:flex;gap:3px;font-size:10px}
-.menu a{color:#fff;text-decoration:none;padding:8px 10px;border:1px solid rgba(255,255,0,.4);border-radius:5px}
+.header{background:linear-gradient(90deg,#540202 0%,#8b0000 55%,#4a0000 100%);color:#fff;padding:20px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99;gap:6px}
+.logo img{height:28px;width:auto;display:block}
+.menu{display:flex;gap:2px;font-size:13px;flex-wrap:wrap;justify-content:flex-end}
+.menu a{color:#fff;text-decoration:none;padding:8px 7px;border:1px solid rgba(255,255,0,.4);border-radius:3px}
 .menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
+.judul-bawah{background:linear-gradient(90deg,#2b0000 0%,#f70a0a 50%,#510101 100%);color:#fff;padding:12px 16px;font-weight:bold;font-size:15px;letter-spacing:1px;border-bottom:2px solid #600404;border-top:1px solid rgba(255,204,0,.5)}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 10px;border-bottom:1px solid #ddd}
 .tabs button{border:none;padding:8px 14px;font-size:12px;font-weight:bold;border-radius:4px;background:#eee;white-space:nowrap}
-.tabs button.active{background:#8b0000;color:#fff}
+.tabs button.active{background:#df0707;color:#fff}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px;padding:15px}
 .frame{border:2px solid #999;padding:3px;background:#fff;box-shadow:0 6px 8px -4px rgba(0,0,0,.4);cursor:pointer}
 .frame img{width:100%;height:110px;object-fit:cover;display:block}
@@ -26,7 +25,9 @@
 .pop-box img{width:100%;height:220px;object-fit:cover}
 .pop-box h3{color:#8b0000;margin:10px 0 5px}
 .pop-box p{font-size:13px;line-height:1.6}
-.footer{background:#2b0000;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;font-size:11px;margin-top:20px}
+.footer{background:linear-gradient(90deg,#2a0000 0%,#ec4444 50%,#290101 100%);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;font-size:11px;margin-top:20px;border-top:2px solid #ffcc00}
+.footer a{color:#fff;text-decoration:none}
+
 </style>
 </head>
 <body>
@@ -34,6 +35,9 @@
   <div class="logo"><img src="logo.png"></div>
   <div class="menu"><a href="home.html">HOME</a><a href="about.html">ABOUT</a><a href="photos.html" class="active">SHOWCASE</a><a href="contact.html">CONTACT</a></div>
 </div>
+
+<div class="judul-bawah">SHOWCASE</div>
+
 <h2 style="text-align:center;padding:18px 0 5px;color:#b00000">SHOWCASE PEKERJAAN</h2>
 <div class="tabs">
   <button id="btn-kolter" class="active" onclick="filterCat('KOLTER',this)">KOLTER</button>
@@ -46,8 +50,8 @@
   <div class="card" data-cat="GRINDING"><div class="frame" onclick="openPop('GRINDING.jpg','GRINDING BLOK & HEAD','Meratakan permukaan blok & head yang melengkung.')"><img src="GRINDING.jpg"></div><p>GRINDING</p></div>
   <div class="card" data-cat="SLEEVE"><div class="frame" onclick="openPop('SLEEVE.jpg','SLEEVE CRANKSHAFT','Sleeve kruk as oleng sesuai oversize, balance ulang.')"><img src="SLEEVE.jpg"></div><p>SLEEVE</p></div>
 </div>
-<div id="popup" onclick="if(event.target.id=='popup')closePop()"><div class="pop-box"><img id="pop-img" src=""><h3 id="pop-title"></h3><p id="pop-desc"></p><button onclick="closePop()" style="margin-top:12px;background:#8b0000;color:#fff;border:none;padding:10px;width:100%;border-radius:6px;font-weight:bold">TUTUP</button></div></div>
-<div class="footer"><span>Designed & Created by EMBUH</span><span onclick="window.scrollTo({top:0,behavior:'smooth'})">Top ↑</span></div>
+<div id="popup" onclick="if(event.target.id=='popup')closePop()"><div class="pop-box"><img id="pop-img" src=""><h3 id="pop-title"></h3><p id="pop-desc"></p><button onclick="closePop()" style="margin-top:12px;background:#fa0b0b;color:#fff;border:none;padding:10px;width:100%;border-radius:6px;font-weight:bold">TUTUP</button></div></div>
+<div class="footer"><a href="home.html">← Back</a><span>Designed & Created by<b> EMBUH</b></span><a href="#">Top ↑</a></div>
 <script>
 function openPop(i,t,d){document.getElementById('pop-img').src=i;document.getElementById('pop-title').innerText=t;document.getElementById('pop-desc').innerText=d;document.getElementById('popup').classList.add('show')}
 function closePop(){document.getElementById('popup').classList.remove('show')}
@@ -58,7 +62,6 @@ function filterCat(cat,btn){
     c.style.display = (c.dataset.cat==cat) ? 'block' : 'none';
   });
 }
-// PAS AWAL BUKA, LANGSUNG FILTER KOLTER AJA
 window.addEventListener('load',()=>{
   const firstBtn = document.getElementById('btn-kolter');
   filterCat('KOLTER', firstBtn);
