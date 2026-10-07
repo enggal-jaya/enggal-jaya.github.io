@@ -21,10 +21,30 @@ body{background:#fff;min-height:100vh;display:flex;flex-direction:column}
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 10px;border-bottom:1px solid #ddd;background:#fff}
 .tabs button{border:none;padding:9px 16px;font-size:12px;font-weight:bold;border-radius:5px;background:#eee;white-space:nowrap;cursor:pointer}
 .tabs button.active{background:#c20505;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;max-width:700px;margin:0 auto;width:100%;flex:1}
-.frame{border:2px solid #999;padding:3px;background:#fff;box-shadow:0 4px 6px rgba(0,0,0,.3);cursor:pointer}
-.frame img{width:100%;height:135px;object-fit:cover;display:block}
-.card p{text-align:center;font-size:11px;font-weight:bold;margin-top:5px}
+.grid{
+  display:grid;
+  grid-template-columns:1fr; /* 1 kolom ke bawah */
+  gap:16px;
+  padding:12px;
+  max-width:500px;
+  margin:0 auto;
+  width:100%;
+  flex:1;
+}
+.frame img{
+  width:100%;
+  height:250px; /* FOTO JADI GEDE */
+  object-fit:cover;
+  display:block;
+}
+.card p{
+  text-align:center;
+  font-size:13px;
+  font-weight:bold;
+  margin-top:6px;
+  padding:6px;
+  background:#f5f5f5;
+}
 .popup-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:18px}
 .popup-bg.open{display:flex}
 .popup{background:#fff;width:100%;max-width:380px;border-radius:12px;overflow:hidden;animation:pop.25s}
@@ -64,14 +84,14 @@ body{background:#fff;min-height:100vh;display:flex;flex-direction:column}
 </div>
 
 <div class="grid">
-  <div class="card KOLTER" onclick="openPop('KOLTER.jpg')"><div class="frame"><img src="KOLTER.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>KOLTER</p></div>
-  <div class="card KOLTER" onclick="openPop('KOLTERAN.jpg')"><div class="frame"><img src="KOLTERAN.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>KOLTERAN</p></div>
-  <div class="card HONING" onclick="openPop('HONING.jpg')"><div class="frame"><img src="HONING.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>HONING</p></div>
-  <div class="card SLEEVE" onclick="openPop('SLEEVE.jpg')"><div class="frame"><img src="SLEEVE.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>SLEEVE</p></div>
-  <div class="card SLEEVE" onclick="openPop('SLEEVE-CRANKSHAFT.jpg')"><div class="frame"><img src="SLEEVE-CRANKSHAFT.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>SLEEVE CRANKSHAFT</p></div>
-  <div class="card GRINDING" onclick="openPop('GRINDING.jpg')"><div class="frame"><img src="GRINDING.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>GRINDING</p></div>
-  <div class="card GRINDING" onclick="openPop('GERINDING.jpg')"><div class="frame"><img src="GERINDING.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>GERINDING</p></div>
-  <div class="card HEAD" onclick="openPop('SILINDER-HEAD.jpg')"><div class="frame"><img src="SILINDER-HEAD.jpg" onerror="this.src='ENNGALJAYA.jpg'"></div><p>SILINDER HEAD</p></div>
+  <div class="card KOLTER" onclick="openPop('KOLTER.jpg')"><div class="frame"><img src="KOLTER.jpg"></div><p>KOLTER</p></div>
+  <div class="card KOLTER" onclick="openPop('KOLTERAN.jpg')"><div class="frame"><img src="KOLTERAN.jpg"></div><p>KOLTERAN</p></div>
+  <div class="card HONING" onclick="openPop('HONING.jpg')"><div class="frame"><img src="HONING.jpg"></div><p>HONING</p></div>
+  <div class="card SLEEVE" onclick="openPop('SLEEVE.jpg')"><div class="frame"><img src="SLEEVE.jpg"></div><p>SLEEVE</p></div>
+  <div class="card SLEEVE" onclick="openPop('SLEEVE-CRANKSHAFT.jpg')"><div class="frame"><img src="SLEEVE-CRANKSHAFT.jpg"></div><p>SLEEVE CRANKSHAFT</p></div>
+  <div class="card GRINDING" onclick="openPop('GRINDING.jpg')"><div class="frame"><img src="GRINDING.jpg"></div><p>GRINDING</p></div>
+  <div class="card GRINDING" onclick="openPop('GERINDING.jpg')"><div class="frame"><img src="GERINDING.jpg"></div><p>GERINDING</p></div>
+  <div class="card HEAD" onclick="openPop('SILINDER-HEAD.jpg')"><div class="frame"><img src="SILINDER-HEAD.jpg"></div><p>SILINDER HEAD</p></div>
 </div>
 
 <div class="popup-bg" id="popBg" onclick="closePop()">
