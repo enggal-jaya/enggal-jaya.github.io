@@ -1,70 +1,111 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" type="image/png" href="Favicon.png">
-<title>SHOWCASE - ENGGALJAYA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHOWCASE - ENGGAL JAYA</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-.header{background:linear-gradient(90deg,#540202 0%,#8b0000 55%,#4a0000 100%);color:#fff;padding:15px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.logo img{height:39px;width:auto;display:block;max-width:90px}
-.menu{display:flex;gap:3px;font-size:12px;flex-wrap:nowrap}
-.menu a{color:#fff;text-decoration:none;padding:5px 5px;border:1px solid rgba(255,255,0,.4);border-radius:3px;white-space:nowrap}
+body{background:#fff;padding-bottom:80px}
+.header{background:#8b0000;color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:999}
+.menu{display:flex;gap:4px;font-size:12px}
+.menu a{color:#fff;text-decoration:none;padding:6px 7px;border:1px solid rgba(255,255,0,.4);border-radius:3px}
 .menu a.active{background:#ff0;color:#8b0000;font-weight:bold}
-.judul-bawah{background:linear-gradient(90deg,#2b0000 0%,#f70a0a 50%,#510101 100%);color:#fff;padding:12px 16px;font-weight:bold;font-size:15px;letter-spacing:1px;border-bottom:2px solid #600404;border-top:1px solid rgba(255,204,0,.5)}
-.tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 10px;border-bottom:1px solid #ddd}
-.tabs button{border:none;padding:8px 14px;font-size:12px;font-weight:bold;border-radius:4px;background:#eee;white-space:nowrap}
-.tabs button.active{background:#df0707;color:#fff}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 12px;padding:15px}
-.frame{border:2px solid #999;padding:3px;background:#fff;box-shadow:0 6px 8px -4px rgba(0,0,0,.4);cursor:pointer}
-.frame img{width:100%;height:110px;object-fit:cover;display:block}
-.card p{font-size:11px;text-align:center;margin-top:6px;font-weight:bold}
-#popup{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:9999;padding:15px}
-#popup.show{display:flex}
-.pop-box{background:#fff;border-radius:10px;padding:12px;max-width:360px;width:100%;border-top:5px solid #8b0000}
-.pop-box img{width:100%;height:220px;object-fit:cover}
-.pop-box h3{color:#8b0000;margin:10px 0 5px}
-.pop-box p{font-size:13px;line-height:1.6}
-.footer{background:linear-gradient(90deg,#2a0000 0%,#ec4444 50%,#290101 100%);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;font-size:11px;margin-top:20px;border-top:2px solid #ffcc00}
+.page-title{background: linear-gradient(90deg, #520909 0%, #c20505 50%, #4a0000 100%);display:flex;justify-content:space-between;padding:12px 16px;color:#fff}
+.hero{height:90px;background:#333 url('ENNGALJAYA.jpg') center/cover;position:relative;display:flex;align-items:center;justify-content:center;color:#fff}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(80,0,0,.65)}
+.hero-inner{position:relative;z-index:2;text-align:center}
+.hero-inner h3 span{color:#ff0}
+.tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 10px;border-bottom:1px solid #ddd;background:#fff}
+.tabs button{border:none;padding:9px 16px;font-size:12px;font-weight:bold;border-radius:5px;background:#eee;white-space:nowrap;cursor:pointer}
+.tabs button.active{background:#c20505;color:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px;max-width:700px;margin:0 auto}
+.frame{border:2px solid #999;padding:3px;background:#fff;box-shadow:0 4px 6px rgba(0,0,0,.3);cursor:pointer}
+.frame img{width:100%;height:135px;object-fit:cover;display:block}
+.card p{text-align:center;font-size:11px;font-weight:bold;margin-top:5px}
+.popup-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:18px}
+.popup-bg.open{display:flex}
+.popup{background:#fff;width:100%;max-width:380px;border-radius:12px;overflow:hidden}
+.popup img{width:100%;height:230px;object-fit:cover}
+.popup-txt{padding:14px}
+.popup-txt h3{color:#8b0000;font-size:15px}
+.popup-txt p{font-size:13px;color:#444;margin-top:6px;line-height:1.5}
+.popup-txt button{margin-top:12px;width:100%;padding:10px;background:#8b0000;color:#fff;border:none;border-radius:6px;font-weight:bold}
+.footer{background:#8b0000;color:#fff;padding:12px 16px;display:flex;justify-content:space-between;font-size:11px}
 .footer a{color:#fff;text-decoration:none}
 </style>
 </head>
 <body>
+
 <div class="header">
-  <div class="logo"><img src="logo.png"></div>
-  <div class="menu"><a href="home.html">HOME</a><a href="about.html">ABOUT</a><a href="photos.html" class="active">SHOWCASE</a><a href="contact.html">CONTACT</a></div>
+<div class="logo"><img src="logo.png" style="width:80px;height:35px;"></div>
+<div class="menu">
+  <a href="home.html">HOME</a>
+  <a href="about.html">ABOUT</a>
+  <a href="photos.html" class="active">SHOWCASE</a>
+  <a href="contact.html">CONTACT</a>
+</div>
 </div>
 
-<div class="judul-bawah">SHOWCASE</div>
+<div class="page-title"><b>SHOWCASE</b><span>ENGGAL JAYA</span></div>
+<div class="hero"><div class="hero-inner"><h3>SHOWCASE <span>US</span></h3><p>ENGGAL JAYA</p></div></div>
 
-<h2 style="text-align:center;padding:18px 0 5px;color:#b00000">SHOWCASE PEKERJAAN</h2>
 <div class="tabs">
-  <button id="btn-kolter" class="active" onclick="filterCat('KOLTER',this)">KOLTER</button>
-  <button onclick="filterCat('GRINDING',this)">GRINDING</button>
+  <button id="b1" class="active" onclick="filterCat('KOLTER',this)">KOLTER</button>
+  <button onclick="filterCat('HONING',this)">HONING</button>
   <button onclick="filterCat('SLEEVE',this)">SLEEVE</button>
+  <button onclick="filterCat('GRINDING',this)">GRINDING</button>
   <button onclick="filterCat('HEAD',this)">SILINDER HEAD</button>
 </div>
+
 <div class="grid">
-  <div class="card" data-cat="KOLTER"><div class="frame" onclick="openPop('KOLTER.jpg','KOLTER BLOK MESIN','Kolter presisi mengembalikan diameter silinder ke standar/oversize.')"><img src="KOLTER.jpg"></div><p>KOLTER</p></div>
-  <div class="card" data-cat="GRINDING"><div class="frame" onclick="openPop('GRINDING.jpg','GRINDING BLOK & HEAD','Meratakan permukaan blok & head yang melengkung.')"><img src="GRINDING.jpg"></div><p>GRINDING</p></div>
-  <div class="card" data-cat="SLEEVE"><div class="frame" onclick="openPop('SLEEVE.jpg','SLEEVE CRANKSHAFT','Sleeve kruk as oleng sesuai oversize, balance ulang.')"><img src="SLEEVE.jpg"></div><p>SLEEVE</p></div>
+  <div class="card KOLTER" onclick="openPop('KOLTER.jpg')"><div class="frame"><img src="KOLTER.jpg"></div><p>KOLTER</p></div>
+  <div class="card KOLTER" onclick="openPop('KOLTERAN.jpg')"><div class="frame"><img src="KOLTERAN.jpg"></div><p>KOLTERAN</p></div>
+  <div class="card HONING" onclick="openPop('HONING.jpg')"><div class="frame"><img src="HONING.jpg"></div><p>HONING</p></div>
+  <div class="card SLEEVE" onclick="openPop('SLEEVE.jpg')"><div class="frame"><img src="SLEEVE.jpg"></div><p>SLEEVE</p></div>
+  <div class="card SLEEVE" onclick="openPop('SLEEVE-CRANKSHAFT.jpg')"><div class="frame"><img src="SLEEVE-CRANKSHAFT.jpg"></div><p>SLEEVE CRANKSHAFT</p></div>
+  <div class="card GRINDING" onclick="openPop('GRINDING.jpg')"><div class="frame"><img src="GRINDING.jpg"></div><p>GRINDING</p></div>
+  <div class="card GRINDING" onclick="openPop('GERINDING.jpg')"><div class="frame"><img src="GERINDING.jpg"></div><p>GERINDING</p></div>
+  <div class="card HEAD" onclick="openPop('SILINDER-HEAD.jpg')"><div class="frame"><img src="SILINDER-HEAD.jpg"></div><p>SILINDER HEAD</p></div>
 </div>
-<div id="popup" onclick="if(event.target.id=='popup')closePop()"><div class="pop-box"><img id="pop-img" src=""><h3 id="pop-title"></h3><p id="pop-desc"></p><button onclick="closePop()" style="margin-top:12px;background:#fa0b0b;color:#fff;border:none;padding:10px;width:100%;border-radius:6px;font-weight:bold">TUTUP</button></div></div>
-<div class="footer"><a href="home.html">← Back</a><span>Designed & Created by<b> EMBUH</b></span><a href="#">Top ↑</a></div>
+
+<div class="popup-bg" id="popBg" onclick="closePop()">
+  <div class="popup" onclick="event.stopPropagation()">
+    <img id="popImg" src="">
+    <div class="popup-txt"><h3 id="popTitle"></h3><p id="popDesc"></p><button onclick="closePop()">TUTUP</button></div>
+  </div>
+</div>
+
+<div class="footer"><a href="home.html">← Back</a><span>Designed & Created by EMBUH</span><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Top ↑</a></div>
+
 <script>
-function openPop(i,t,d){document.getElementById('pop-img').src=i;document.getElementById('pop-title').innerText=t;document.getElementById('pop-desc').innerText=d;document.getElementById('popup').classList.add('show')}
-function closePop(){document.getElementById('popup').classList.remove('show')}
+var dataPop = {
+ 'KOLTER.jpg':{title:'MESIN KOLTER', desc:'Mesin kolter presisi untuk memperbesar lubang silinder yang baret / aus.'},
+ 'KOLTERAN.jpg':{title:'PROSES KOLTERAN', desc:'Proses kolter blok mesin dengan mesin boring vertikal, hasil presisi.'},
+ 'HONING.jpg':{title:'MESIN HONING COMEC', desc:'Finishing akhir setelah kolter dengan mesin honing untuk kehalusan maksimal.'},
+ 'SLEEVE.jpg':{title:'PRESS SLEEVE', desc:'Pemasangan boring / sleeve baru pada blok yang sudah ngantong.'},
+ 'SLEEVE-CRANKSHAFT.jpg':{title:'SLEEVE & CRANKSHAFT', desc:'Perbaikan crankshaft dan pemasangan sleeve, diesel & bensin.'},
+ 'GRINDING.jpg':{title:'GRINDING KRUK AS - SM', desc:'Mesin grinding hijau SM untuk menghaluskan kruk as yang baret.'},
+ 'GERINDING.jpg':{title:'GERINDING SANSEI', desc:'Mesin SANSEI untuk meratakan silinder head yang melengkung.'},
+ 'SILINDER-HEAD.jpg':{title:'SILINDER HEAD', desc:'Silinder head siap pasang, sudah diselep rata, skur klep, packing rapi.'}
+};
 function filterCat(cat,btn){
   document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.card').forEach(c=>{
-    c.style.display = (c.dataset.cat==cat) ? 'block' : 'none';
+    c.style.display = c.classList.contains(cat)? 'block':'none';
   });
 }
-window.addEventListener('load',()=>{
-  const firstBtn = document.getElementById('btn-kolter');
-  filterCat('KOLTER', firstBtn);
-});
+function openPop(file){
+  var d = dataPop[file];
+  document.getElementById('popImg').src = file;
+  document.getElementById('popTitle').innerText = d.title;
+  document.getElementById('popDesc').innerText = d.desc;
+  document.getElementById('popBg').classList.add('open');
+}
+function closePop(){ document.getElementById('popBg').classList.remove('open'); }
+window.onload = function(){ filterCat('KOLTER', document.getElementById('b1')); }
 </script>
+
 </body>
 </html>
