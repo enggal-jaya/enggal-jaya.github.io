@@ -15,45 +15,42 @@ body{background:#fff;min-height:100vh;display:flex;flex-direction:column}
 .hero{height:90px;background:#333 url('ENNGALJAYA.jpg') center/cover;position:relative;display:flex;align-items:center;justify-content:center;color:#fff}
 .hero::after{content:'';position:absolute;inset:0;background:rgba(80,0,0,.65)}
 .hero-inner{position:relative;z-index:2;text-align:center}
-.hero-inner h3{font-size:20px}
 .hero-inner h3 span{color:#ff0}
-.hero-inner p{font-size:12px;letter-spacing:2px;margin-top:3px}
+
+/* TABS */
 .tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 10px;border-bottom:1px solid #ddd;background:#fff}
 .tabs button{border:none;padding:9px 16px;font-size:12px;font-weight:bold;border-radius:5px;background:#eee;white-space:nowrap;cursor:pointer}
 .tabs button.active{background:#c20505;color:#fff}
-.grid{
-  display:grid;
-  grid-template-columns:1fr; /* 1 kolom ke bawah */
-  gap:16px;
-  padding:12px;
-  max-width:500px;
-  margin:0 auto;
-  width:100%;
-  flex:1;
-}
+
+/* GRID JADI 1 KOLOM KE BAWAH + FOTO GEDE FULL */
+.grid{display:grid;grid-template-columns:1fr;gap:20px;padding:14px;max-width:600px;margin:0 auto;width:100%;flex:1}
+.frame{border:2px solid #999;padding:5px;background:#fff;box-shadow:0 4px 8px rgba(0,0,0,.3);cursor:pointer}
 .frame img{
   width:100%;
-  height:250px; /* FOTO JADI GEDE */
-  object-fit:cover;
+  height:auto; /* BIAR GAK KEPOTONG */
   display:block;
+  object-fit:contain; /* FULL KELIHATAN */
+  background:#f2f2f2;
 }
-.card p{
-  text-align:center;
-  font-size:13px;
-  font-weight:bold;
-  margin-top:6px;
-  padding:6px;
-  background:#f5f5f5;
-}
+.card p{text-align:center;font-size:13px;font-weight:bold;margin-top:6px;padding:8px;background:#f5f5f5}
+
+/* POPUP FULL JUGA */
 .popup-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:10000;align-items:center;justify-content:center;padding:18px}
 .popup-bg.open{display:flex}
-.popup{background:#fff;width:100%;max-width:380px;border-radius:12px;overflow:hidden;animation:pop.25s}
-@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
-.popup img{width:100%;height:230px;object-fit:cover}
+.popup{background:#fff;width:100%;max-width:420px;border-radius:12px;overflow:hidden}
+.popup img{
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  object-fit:contain; /* INI BIAR POPUP GAK KEPOTONG */
+  background:#111;
+  display:block;
+}
 .popup-txt{padding:14px}
 .popup-txt h3{color:#8b0000;font-size:15px}
 .popup-txt p{font-size:13px;color:#444;margin-top:6px;line-height:1.5}
-.popup-txt button{margin-top:12px;width:100%;padding:10px;background:#8b0000;color:#fff;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+.popup-txt button{margin-top:12px;width:100%;padding:12px;background:#8b0000;color:#fff;border:none;border-radius:6px;font-weight:bold;cursor:pointer}
+
 .footer{background:linear-gradient(90deg,#2b0000 0%,#cb2020 50%,#1a0000 100%);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;font-size:11px;margin-top:auto}
 .footer a{color:#fff;text-decoration:none}
 </style>
@@ -73,14 +70,12 @@ body{background:#fff;min-height:100vh;display:flex;flex-direction:column}
 <div class="page-title"><b>SHOWCASE</b><span>ENGGAL JAYA</span></div>
 <div class="hero"><div class="hero-inner"><h3>SHOWCASE <span>US</span></h3><p>ENGGAL JAYA</p></div></div>
 
-<h2 style="text-align:center;color:#b00000;margin:18px 0 5px;font-size:18px">SHOWCASE PEKERJAAN</h2>
-
 <div class="tabs">
   <button id="b1" class="active" onclick="filterCat('KOLTER',this)">KOLTER</button>
   <button onclick="filterCat('HONING',this)">HONING</button>
   <button onclick="filterCat('SLEEVE',this)">SLEEVE</button>
   <button onclick="filterCat('GRINDING',this)">GRINDING</button>
-  <button onclick="filterCat('HEAD',this)">SILINDER HEAD</button>
+  <button onclick="filterCat('HEAD',this)">HEAD</button>
 </div>
 
 <div class="grid">
@@ -97,30 +92,22 @@ body{background:#fff;min-height:100vh;display:flex;flex-direction:column}
 <div class="popup-bg" id="popBg" onclick="closePop()">
   <div class="popup" onclick="event.stopPropagation()">
     <img id="popImg" src="">
-    <div class="popup-txt">
-      <h3 id="popTitle"></h3>
-      <p id="popDesc"></p>
-      <button onclick="closePop()">TUTUP</button>
-    </div>
+    <div class="popup-txt"><h3 id="popTitle"></h3><p id="popDesc"></p><button onclick="closePop()">TUTUP</button></div>
   </div>
 </div>
 
-<div class="footer">
-  <a href="home.html">← Back</a>
-  <span>Designed & Created by EMBUH</span>
-  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Top ↑</a>
-</div>
+<div class="footer"><a href="home.html">← Back</a><span>Designed & Created by EMBUH</span><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Top ↑</a></div>
 
 <script>
 var dataPop = {
- 'KOLTER.jpg':{title:'MESIN KOLTER', desc:'Mesin kolter presisi untuk memperbesar lubang silinder yang baret / aus, mengembalikan diameter ke oversize standar dengan hasil presisi.'},
- 'KOLTERAN.jpg':{title:'PROSES KOLTERAN', desc:'Proses kolter blok mesin dengan mesin boring vertikal, hasil presisi dan rata untuk kompresi maksimal.'},
+ 'KOLTER.jpg':{title:'MESIN KOLTER', desc:'Mesin kolter presisi untuk memperbesar lubang silinder yang baret / aus.'},
+ 'KOLTERAN.jpg':{title:'PROSES KOLTERAN', desc:'Proses kolter blok mesin dengan mesin boring vertikal.'},
  'HONING.jpg':{title:'MESIN HONING COMEC', desc:'Finishing akhir setelah kolter dengan mesin honing COMEC untuk kehalusan maksimal permukaan silinder.'},
- 'SLEEVE.jpg':{title:'PRESS SLEEVE', desc:'Pemasangan boring / sleeve baru pada blok yang sudah terlalu besar / ngantong, kembali seperti baru.'},
- 'SLEEVE-CRANKSHAFT.jpg':{title:'SLEEVE & CRANKSHAFT', desc:'Perbaikan crankshaft dan pemasangan sleeve, untuk mesin diesel & bensin semua tipe.'},
- 'GRINDING.jpg':{title:'GRINDING KRUK AS - SM', desc:'Mesin grinding hijau SM untuk menghaluskan kruk as yang baret, presisi micron untuk putaran halus.'},
- 'GERINDING.jpg':{title:'GERINDING SANSEI', desc:'Mesin SANSEI surface grinding untuk meratakan silinder head yang melengkung akibat overheat.'},
- 'SILINDER-HEAD.jpg':{title:'SILINDER HEAD', desc:'Silinder head siap pasang, sudah diselep rata, skur klep presisi, dan packing rapi. Hasil Bengkel Enggal Jaya.'}
+ 'SLEEVE.jpg':{title:'PRESS SLEEVE', desc:'Pemasangan boring / sleeve baru pada blok yang sudah ngantong.'},
+ 'SLEEVE-CRANKSHAFT.jpg':{title:'SLEEVE & CRANKSHAFT', desc:'Perbaikan crankshaft dan pemasangan sleeve, diesel & bensin.'},
+ 'GRINDING.jpg':{title:'GRINDING KRUK AS - SM', desc:'Mesin grinding hijau SM untuk menghaluskan kruk as yang baret.'},
+ 'GERINDING.jpg':{title:'GERINDING SANSEI', desc:'Mesin SANSEI untuk meratakan silinder head yang melengkung.'},
+ 'SILINDER-HEAD.jpg':{title:'SILINDER HEAD', desc:'Silinder head siap pasang, sudah diselep rata, skur klep presisi.'}
 };
 function filterCat(cat,btn){
   document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
